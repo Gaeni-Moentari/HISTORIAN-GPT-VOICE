@@ -7,7 +7,7 @@ newsapi-python
 streamlit-mic-recorder
 gTTS
 pygame
-speech_recognition
+SpeechRecognition
 pydub
 pyaudio
 ffmpeg-python
