@@ -1,0 +1,13 @@
+crewai
+streamlit
+langchain
+langchain_community
+langchain_openai
+newsapi-python
+streamlit-mic-recorder
+gTTS
+pygame
+speech_recognition
+pydub
+pyaudio
+ffmpeg-python
