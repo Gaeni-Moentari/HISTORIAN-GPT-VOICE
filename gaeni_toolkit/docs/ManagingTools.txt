@@ -1,0 +1,59 @@
+== ADD NEW TOOLS ==
+
+1. Make sure, u already at library directory.
+
+    Example:\<your directory>\gaeni_toolkit>
+
+2. Create New Branch, do command :
+
+    $git branch <branch name>
+
+        example : ' git branch Weather '
+
+        *recommend use your tool name
+
+3. Make sure your new branch is exists, do command :
+
+    $git branch
+
+4. Switching Branch, do command :
+
+    $git checkout <your branch>
+
+        example : ' git checkout Weather '
+
+5. Make Sure you're at correct branch :
+
+    $git branch
+
+6. Add your tools at gaeni_toolkit library, example :
+
+    weather_tool.py
+
+7. Add any change working directory to the staging area, do command :
+
+    $git add .
+
+8. Create with a commit message, do command :
+
+    $git commit -m '<your message>'
+
+        example : git commit -m 'new: Weather Tool'
+
+9. Push Your Branch (Create Pull Request), do command :
+
+    $git push <remote name> <branch name>
+
+        example : 'git push toolkit Weather'
+
+== END NEW TOOLS ==
+
+== UPATING TOOLS (PULLING NEW CHANGES FROM LIBRARY) ==
+
+    1. Make sure, u already at library directory.
+
+        Example:\<your directory>\gaeni_toolkit>
+
+    2. Updating with Git Pull, do command :
+
+        $git pull

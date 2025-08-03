@@ -1,0 +1,27 @@
+*note = *Without ' $ ' sign for terminal user
+
+A. Cloning to your repository, do command :
+
+    $git clone https://github.com/elsakti/gaeni_toolkit.git
+
+B. Gaeni Toolkit Usage :
+
+    from gaeni_toolkit.<tool file name> import <tool>
+
+C. Create Remote
+
+    1. Switch to library directory, do command :
+
+        cd gaeni_toolkit
+
+    2. Create New Remote to Github Repository Library
+
+        $git remote add <remote name> https://github.com/elsakti/gaeni_toolkit.git
+
+            example : ' git remote add toolkit https://github.com/elsakti/gaeni_toolkit.git '
+
+    3. Make sure, new remote is exists, do command :
+
+        $git remote
+
+        *git remote command will send your existing remotes
