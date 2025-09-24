@@ -69,7 +69,7 @@ def main():
             parsed_input = audio_processor.extract_question_location_language(transcribed_text)
             question = parsed_input['question']
             location = parsed_input['location']
-            language = "English"
+            language = "Bahasa Indonesia"
             
             Static.load_api()
             
