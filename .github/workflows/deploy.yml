@@ -1,30 +1,18 @@
-name: Deploy to server
+name: CI/CD Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: [self-hosted, Linux, X64]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up SSH key
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.AWS_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.AWS_HOST }} >> ~/.ssh/known_hosts
-
-    - name: Build Docker image
-      run: |
-        docker build -t registry.gaeni.org/historian/ai:latest .
-        docker push registry.gaeni.org/historian/ai:latest
-
-    - name: Deploy to Docker Swarm
-      run: |
-        scp docker-compose.yml ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }}:~/historian-deploy.yml
-        ssh ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} "export OPENAI_API_KEY='${{ secrets.OPENAI_API_KEY }}' && export SERPER_API_KEY='${{ secrets.SERPER_API_KEY }}' && export NEWS_API_KEY='${{ secrets.NEWS_API_KEY }}' && export WEATHER_API_KEY='${{ secrets.WEATHER_API_KEY }}' && docker stack deploy -c ~/historian-deploy.yml spafa"
+      - name: Run docker-compose
+        run: |
+          docker compose up -d --build
