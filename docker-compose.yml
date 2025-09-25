@@ -4,12 +4,12 @@ services:
   historian:
     image: registry.gaeni.org/historian/ai:latest
     deploy:
-      replicas: 1
+      replicas: 10
       restart_policy:
         condition: on-failure
       placement:
         constraints:
-          - "node.role == worker"
+          - "node.hostname == Bandung"
       labels:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik-public"
