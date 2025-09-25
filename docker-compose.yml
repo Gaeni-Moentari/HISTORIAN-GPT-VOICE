@@ -14,7 +14,6 @@ services:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik-public"
         - "traefik.constraint-label=traefik-public"
-        - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
         - "traefik.http.routers.historian.rule=Host(`historian.gaeni.org`)"
         - "traefik.http.routers.historian.entrypoints=https"
         - "traefik.http.routers.historian.tls=true"
