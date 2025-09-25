@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r req.txt
 
 COPY . .
 
-CMD ["streamlit", "run", "main.py", "--server.port=8501", "--server.enableCORS=false"]
+CMD ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
