@@ -20,7 +20,7 @@ services:
         - "traefik.constraint-label=traefik-public"
         - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
         - "traefik.http.routers.historian.rule=Host(`historian.gaeni.org`)"
-        - "traefik.http.routers.historian.entrypoints=https"
+        - "traefik.http.routers.historian.entrypoints=websecure"
         - "traefik.http.routers.historian.tls=true"
         - "traefik.http.routers.historian.tls.certresolver=le"
         - "traefik.http.services.historian.loadbalancer.server.port=8501"
