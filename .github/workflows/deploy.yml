@@ -16,7 +16,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t bandung:5000/historian/ai:latest .
-          docker push bandung:5000/perikanan/ai:latest
+          docker push bandung:5000/historian/ai:latest
 
       - name: Run docker-compose
         run: |

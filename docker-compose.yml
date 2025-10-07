@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   historian:
-    build: .
+    image: bandung:5000/historian/ai:latest
     environment:
       OPENAI_API_KEY: "${OPENAI_API_KEY}"
       OPENAI_MODEL_NAME: "gpt-4o"
@@ -19,7 +19,7 @@ services:
         - "traefik.docker.network=traefik-public"
         - "traefik.constraint-label=traefik-public"
         - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.routers.historian.rule=Host(`hitorian.gaeni.org`)"
+        - "traefik.http.routers.historian.rule=Host(`historian.gaeni.org`)"
         - "traefik.http.routers.historian.entrypoints=https"
         - "traefik.http.routers.historian.tls=true"
         - "traefik.http.routers.historian.tls.certresolver=le"
