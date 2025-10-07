@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Build Docker image
+        run: |
+          docker build -t bandung:5000/historian/ai:latest .
+          docker push bandung:5000/perikanan/ai:latest
+
       - name: Run docker-compose
         run: |
           echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
