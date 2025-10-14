@@ -4,10 +4,3 @@ langchain
 langchain_community
 langchain_openai
 newsapi-python
-streamlit-mic-recorder
-gTTS
-pygame
-SpeechRecognition
-pydub
-pyaudio
-ffmpeg-python

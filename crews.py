@@ -4,6 +4,7 @@ from gaeni_toolkit.agents import Agents, Validator
 from gaeni_toolkit.tasks import Tasks, TaskValidator 
 from static import Static
 from dotenv import load_dotenv
+from crewai_tools import SerperDevTool
 load_dotenv()
 
 llmx = Static.load_api()
@@ -11,26 +12,11 @@ llmx = Static.load_api()
 if llmx is None:
     raise ValueError("Failed to load API. Please check your API key and connection.")
 
-# Using crewai's built-in search tool instead
-from crewai.tools import tool
-import requests
-
-@tool("search_tool")
-def search_tool(query: str) -> str:
-    """Search the web for information using Serper API"""
-    api_key = os.getenv("SERPER_API_KEY")
-    if not api_key:
-        return "No Serper API key found"
-    
-    url = "https://google.serper.dev/search"
-    headers = {"X-API-KEY": api_key, "Content-Type": "application/json"}
-    data = {"q": query, "num": 2}
-    
-    response = requests.post(url, headers=headers, json=data)
-    if response.status_code == 200:
-        results = response.json()
-        return str(results.get("organic", []))
-    return "Search failed"
+search_tool = SerperDevTool(
+    api_key=os.getenv("SERPER_API_KEY"),
+    search_engine_type="google",
+    max_results=2
+)
 class SetAgent:
     masterH = Agents(llm=llmx, tools=[search_tool]).master_historian_agent()
     questionV = Validator(llm=llmx, tools=[search_tool]).question_validator_agent()
